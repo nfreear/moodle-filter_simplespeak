@@ -1,0 +1,75 @@
+<!-- -*- markdown -*- -->
+
+SimpleSpeak filter
+======================
+
+A Moodle filter to provide speech synthesis (text-to-speech/ TTS) services for
+arbitrary text. Text such as `[Speak] Hello world! [/Speak]` is replaced with
+a button with the text as a label. Press the button, and the text is spoken!
+
+This is beneficial, for example, when teaching younger children. And for
+accessibility.
+
+Requirements: tested with Moodle 1.9.7 (all Moodle 1.9.x should work, Moodle 2.x
+should work - to test!) Requires Javascript. Requires a TTS service (see below).
+
+Uses:  jQuery (v1.3.2).
+
+Installation
+------------ 
+1. Download and unzip the code files. Copy to the directory on the server,
+  eg. `/var/www/moodle/filter/simplespeak/`
+2. Log in to Moodle as admin, visit Site Administration | Modules | Filters |
+  Manage Filters. Scroll down and click on the icon for Simplespeak to enable it.
+3. Add a TTS service to config.php, eg.
+        $CFG->simplespeak_service_url =
+          'http://example.org/cgi-bin/espeak/getsound.pl?lang=!LANG&text=!TEXT';
+  The string should contain two placeholders, !LANG (language), and !TEXT.
+  This service can be local, or third-party - see Notes below.
+4. Ensure that the directory $CFG->dataroot is writeable by the Apache user,
+  or create a writeable cache directory, `$CFG->dataroot/simplespeak/cache/`
+
+Usage
+-----
+
+1. Simple example. Enable the filter (admin). Then, type the following:
+
+        [Speak] Hello world! [/Speak]
+ 
+2. Alphabet quiz example. Type the following in the rich-editor, for example for a question/quiz (note, line-breaks, which can be represented by <br /> are required):
+
+        [Speak]
+        ;; Just a comment.
+        letter = A
+        sound  = ah
+        image  = http://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Red_Delicious.jpg/240px-Red_Delicious.jpg
+        alt    = A red delicious apple
+        word   = apple
+        phrase = Which of the words below start with the letter [em]a[/em]?
+        [/Speak]
+
+Notes
+-----
+* Roadmap/ todo: replace jQuery dependency with YUI Javascript.
+* Roadmap: ensure the filter works with Moodle 2.x.
+* Roadmap: add a filter configuration page.
+* Roadmap: improve language support, improve caching.
+* TTS service: you can install local software, eg. use eSpeak/LAME, see
+      <http://code.google.com/p/webanywhere/>
+  Or it could be a third-party service, for example, Google Translate.
+  Note, my reading of the Google Translate terms suggests this is OK - 
+  pressing a button is "automated" (and we cache the sound-files locally).
+  However, I accept no responsibility this - check the terms yourself!
+
+Credits
+-------
+Filter. Copyright (c) 2010 Nicholas Freear.
+
+* License <http://gnu.org/copyleft/gpl.html>
+* <http://freear.org.uk/#moodle>
+
+jQuery JavaScript Library. Copyright (c) 2009 John Resig
+ * LicenseDual licensed under the MIT and GPL licenses.
+     * <http://docs.jquery.com/License>
+ * <http://jquery.com/>
+

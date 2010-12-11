@@ -6,10 +6,10 @@
  *
  * Uses: jQuery, (eSpeak/LAME or external service for TTS - see proxy script.)
  * @category  Moodle4-9
- * @author    N.D.Freear, 9 April-3 August 2010.
+ * @author    N.D.Freear, April-December 2010 <nfreear @ yahoo.co.uk>
  * @copyright Copyright (c) 2010 Nicholas Freear.
  * @license   http://www.gnu.org/copyleft/gpl.html
- * @link      http://freear.org.uk/moodle/
+ * @link      http://freear.org.uk/#moodle
  */
 /**
   Usage:
@@ -35,14 +35,8 @@
 //  This filter will replace any [Speak] TEXT [/Speak] with
 //  a media plugin that plays that media inline
 //
-//  To activate this filter, add a line like this to your
-//  list of filters in your Filter configuration:
-//
-//  filter/oembed/filter.php
-//
 //////////////////////////////////////////////////////////////
 
-#require_once($CFG->libdir.'/weblib.php');
 require_once($CFG->libdir.'/../filter/simplespeak/simplespeaklib.php');
 
 /// This is the filtering function itself.  It accepts the
