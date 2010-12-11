@@ -2,9 +2,9 @@
 /**
  * A simple text-to-speech proxy (see README).
  *
- * @author    N.D.Freear, December 2010 <nfreear @ yahoo.co.uk>
- * @copyright Copyright (c) 2010 Nicholas Freear.
- * @license   http://www.gnu.org/copyleft/gpl.html
+ * @author    N.D.Freear, December 2010.
+ * @copyright (c) 2010 Nicholas Freear {@link http://freear.org.uk}.
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v2 or later
  */
 require_once '../../../config.php';
 
@@ -43,7 +43,6 @@ $data_dir = "$CFG->dataroot/simplespeak/cache/";
 $data_file= $data_dir ."$md5.mp3";
 
 
-
 $resp = NULL;
 if (!file_exists($data_file)) {
 
@@ -76,5 +75,4 @@ if (!file_exists($data_file)) {
 	$bytes = file_put_contents($data_file, $resp->results);
 }
 send_file($data_file, "$md5.mp3");
-
 

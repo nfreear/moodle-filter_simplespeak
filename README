@@ -28,6 +28,7 @@ Installation
 
   The string should contain two placeholders, `!LANG` (language), and `!TEXT`.
   This service can be local, or third-party - see Notes below.
+
 4. Ensure that the directory `$CFG->dataroot` is writeable by the Apache user,
   or create a writeable cache directory, `$CFG->dataroot/simplespeak/cache/`
 
@@ -73,6 +74,6 @@ Filter. Copyright (c) 2010 Nicholas Freear.
 jQuery JavaScript Library. Copyright (c) 2009 John Resig.
 
  * LicenseDual licensed under the MIT and GPL licenses.
-     * <http://docs.jquery.com/License>
+   <http://docs.jquery.com/License>
  * <http://jquery.com/>
 

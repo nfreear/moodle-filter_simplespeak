@@ -4,11 +4,11 @@
  *
  * A Moodle filter to provide speech synthesis (TTS) services for arbitrary text.
  *
- * Uses: jQuery, (eSpeak/LAME or external service for TTS - see proxy script.)
+ * Uses: jQuery, (eSpeak/LAME or external service for TTS - see README.)
  * @category  Moodle4-9
  * @author    N.D.Freear, April-December 2010 <nfreear @ yahoo.co.uk>
- * @copyright Copyright (c) 2010 Nicholas Freear.
- * @license   http://www.gnu.org/copyleft/gpl.html
+ * @copyright (c) 2010 Nicholas Freear {@link http://freear.org.uk}.
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v2 or later
  * @link      http://freear.org.uk/#moodle
  */
 /**
@@ -39,9 +39,9 @@
 
 require_once($CFG->libdir.'/../filter/simplespeak/simplespeaklib.php');
 
-/// This is the filtering function itself.  It accepts the
-/// courseid and the text to be filtered (in HTML form).
 
+/** Moodle 1.9.x filter function (also works with Moodle 2.0).
+*/
 function simplespeak_filter($courseid, $text) {
     static $filter_count = 0;
 
