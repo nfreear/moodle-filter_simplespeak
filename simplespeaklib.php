@@ -1,7 +1,31 @@
 <?php
-#http://php.net/manual/en/function.parse-ini-string.php#97621
-# Allow white-space?
+/** SimpleSpeak - utility functions.
+ *
+ * @copyright Copyright (c) 2010 Nicholas Freear.
+ * @license   http://www.gnu.org/copyleft/gpl.html
+ */
 
+/**Safely, recursively create directories.
+*/
+function _ss_mkdir_safe($base, $path, $perm=0777) { #Or 0664.
+  $parts = explode('/', trim($path, '/'));
+  $dir = $base;
+  $success = true;
+  foreach ($parts as $p) {
+	$dir .= "/$p";
+	if (is_dir($dir)) { break;
+	} elseif (file_exists($dir)) {
+	  error("File exists '$p'.");
+	}
+	$success = mkdir($dir, $perm);
+  }
+  return $success;
+}
+
+/** Depending on the PHP version, define the parse_ini_string function.
+ *  Source: a comment in the PHP manual,
+ * http://php.net/manual/en/function.parse-ini-string.php#97621
+ */
 # Define parse_ini_string if it doesn't exist.
 # Does accept lines starting with ; as comments
 # Does not accept comments after values
@@ -13,7 +37,8 @@ if( !function_exists('parse_ini_string') ){
         
         foreach( $lines as $line ) {
             $statement = preg_match(
-#"/^(?!;)(?P<key>[\w+\.\-]+?)\s*=\s*(?P<value>.+?)\s*$/"  //WAS.
+// Allow white-space.
+// Was: "/^(?!;)(?P<key>[\w+\.\-]+?)\s*=\s*(?P<value>.+?)\s*$/"
 "/^(?!;)\s*?(?P<key>[\w+\.\-]+?)\s*=\s*(?P<value>.+?)\s*$/", $line, $match );
 
             if( $statement ) {
@@ -32,11 +57,3 @@ if( !function_exists('parse_ini_string') ){
     }
 }
 
-  function copyemz($file1, $file2){ 
-      $contentx = file_get_contents($file1); 
-                   $openedfile = fopen($file2, "w"); 
-                   fwrite($openedfile, $contentx); 
-                   fclose($openedfile); 
-                    
-      return $contentx!==FALSE; //$status; 
-  }

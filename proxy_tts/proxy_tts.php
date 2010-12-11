@@ -7,8 +7,10 @@
  * @license   http://www.gnu.org/copyleft/gpl.html
  */
 require_once '../../../config.php';
-require_once '../../../lib/filelib.php';
+
 global $CFG;
+require_once $CFG->libdir .'/filelib.php';
+require_once $CFG->dirroot.'/filter/simplespeak/simplespeaklib.php';
 
 $cache_dir= 'simplespeak/cache';
 $base_url = "$CFG->wwwroot/cgi-bin/espeak/getsound.pl?lang=!LANG&text=!TEXT";
@@ -40,20 +42,7 @@ $md5 = md5($text);
 $data_dir = "$CFG->dataroot/simplespeak/cache/";
 $data_file= $data_dir ."$md5.mp3";
 
-function _ss_mkdir_safe($base, $path, $perm='0664') {
-  $parts = explode('/', trim($path, '/'));
-  $dir = $base;
-  $success = true;
-  foreach ($parts as $p) {
-	$dir .= "/$p";
-	if (is_dir($dir)) { break;
-	} elseif (file_exists($dir)) {
-	  error("File exists '$p'.");
-	}
-	$success = mkdir($dir, $perm);
-  }
-  return $success;
-}
+
 
 $resp = NULL;
 if (!file_exists($data_file)) {

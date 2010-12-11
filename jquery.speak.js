@@ -30,7 +30,6 @@ $(document).ready(function() {
       if(!lang)lang = $("html[lang]") ? $("html").attr('lang') : 'en';
       
       $("#tts-frame").attr('src', SIMPLESPEAK_URL+escape(text));
-          //"http://localhost/espeak_tts?text="+escape(text));
       return false;
     }
 
@@ -39,6 +38,6 @@ $(document).ready(function() {
     });
 
     $('head').append(
-    '<link rel="stylesheet" type="text/css" href="/w/moodle/filter/simplespeak/simplespeak.css"/>');
+    '<link rel="stylesheet" type="text/css" href="'+SIMPLESPEAK_CSS+'"/>');
 });
 

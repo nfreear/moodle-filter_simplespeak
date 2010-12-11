@@ -159,6 +159,7 @@ EOF;
         $newtext .= <<<EOF
     <script type="text/javascript">
     var SIMPLESPEAK_URL="{$CFG->wwwroot}/filter/simplespeak/proxy_tts/?q=";
+    var SIMPLESPEAK_CSS="{$CFG->wwwroot}/filter/simplespeak/simplespeak.css";
     </script>
     <script src="{$CFG->wwwroot}/filter/simplespeak/jquery.speak.js" type="text/javascript"></script>
 
