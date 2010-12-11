@@ -19,14 +19,16 @@ Installation
 ------------ 
 1. Download and unzip the code files. Copy to the directory on the server,
   eg. `/var/www/moodle/filter/simplespeak/`
-2. Log in to Moodle as admin, visit Site Administration | Modules | Filters |
-  Manage Filters. Scroll down and click on the icon for Simplespeak to enable it.
+2. Log in to Moodle as admin, visit `Site Administration | Modules | Filters |
+  Manage Filters`. Scroll down and click on the icon for Simplespeak to enable it.
 3. Add a TTS service to config.php, eg.
+
         $CFG->simplespeak_service_url =
           'http://example.org/cgi-bin/espeak/getsound.pl?lang=!LANG&text=!TEXT';
-  The string should contain two placeholders, !LANG (language), and !TEXT.
+
+  The string should contain two placeholders, `!LANG` (language), and `!TEXT`.
   This service can be local, or third-party - see Notes below.
-4. Ensure that the directory $CFG->dataroot is writeable by the Apache user,
+4. Ensure that the directory `$CFG->dataroot` is writeable by the Apache user,
   or create a writeable cache directory, `$CFG->dataroot/simplespeak/cache/`
 
 Usage
@@ -58,8 +60,8 @@ Notes
       <http://code.google.com/p/webanywhere/>
   Or it could be a third-party service, for example, Google Translate.
   Note, my reading of the Google Translate terms suggests this is OK - 
-  pressing a button is "automated" (and we cache the sound-files locally).
-  However, I accept no responsibility this - check the terms yourself!
+  ie. pressing a button is not "automated" (and we cache the sound-files locally).
+  However, I accept no responsibility for this - check the terms yourself!
 
 Credits
 -------
@@ -68,7 +70,8 @@ Filter. Copyright (c) 2010 Nicholas Freear.
 * License <http://gnu.org/copyleft/gpl.html>
 * <http://freear.org.uk/#moodle>
 
-jQuery JavaScript Library. Copyright (c) 2009 John Resig
+jQuery JavaScript Library. Copyright (c) 2009 John Resig.
+
  * LicenseDual licensed under the MIT and GPL licenses.
      * <http://docs.jquery.com/License>
  * <http://jquery.com/>
