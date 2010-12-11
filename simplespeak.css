@@ -1,0 +1,20 @@
+/** SimpleSpeak filter styles.
+*/
+.qtext .alphabet {font:1.2em "Comic Sans MS",Arial,sans-serif; color:#333; text-align:center; } /*navy*/
+.qtext .alphabet h2, .qtext .alphabet h3 { margin:0 0 .5em; }
+.tts.debug #tts-frame  { display:block; width:300px; height:50px; border:6px solid #999; padding:0; } /*DEBUG*/
+.tts #tts-frame  { display:inline; width:1px; height:1px; border:none; } /*LIVE*/
+
+.tts .attribution{ display:block; font-size:xx-small; }
+.tts button span { position:absolute; top:-999px; }
+.tts button {
+  cursor:pointer; font:1.3em "Comic Sans MS",Arial,sans-serif; color:#060;
+  background:#eee url("pix/sound-icon_30px.png") no-repeat left;
+  padding-left:26px; border:1px solid #696;
+  -moz-border-radius:7px; border-radius:7px;
+}
+.qtext .alphabet em { font-style:normal; text-decoration:underline; letter-spacing:.1em; }
+.tts img { margin:6px; padding:1px; border:1px solid #aaa; -moz-border-radius:5px; border-radius:5px; }
+
+.que .answer { font:1.5em "Comic Sans MS",Arial,sans-serif; }
+.que .answer .tts button { font-size:1em; text-align:left; }
