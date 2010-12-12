@@ -78,8 +78,10 @@ function _simplespeak_filter_callback($matches_ini) {
       'alt'   => '',
     );
 
-    // Tidy up after WYSIWYG editors - line breaks matter.
+    // Tidy up after WYSIWYG editors - line breaks matter, text values can be quoted.
     $speak = trim(str_ireplace(array('<br>', '<br />'), "\n", $matches_ini[1]));
+    $speak = str_replace(array('&quot;', '&apos;', '&nbsp;'),
+                array('"', "'", ' '), $speak);  #html_entity_decode?
 
     // Check if we have the simplest syntax:  [Speak] TEXT [/Speak]
     $very_simple = (''!=$speak && FALSE==strpos($speak, '='));
@@ -90,7 +92,11 @@ function _simplespeak_filter_callback($matches_ini) {
         return _simplespeak_filter_script($newtext, $call_count);
     }
 
-    $speak = parse_ini_string($speak);
+    $speak = @parse_ini_string($speak);
+	if (!$speak) {
+		debugging('SimpleSpeak filter: syntax error? (Hint, text values are best quoted.)');
+		return $matches_ini[0];
+	}
     $speak = (object) array_merge($defaults, $speak);
 
     $speak->phrase_el = $speak->letter_el = $speak->sound_el
