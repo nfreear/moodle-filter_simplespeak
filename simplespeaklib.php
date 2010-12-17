@@ -5,6 +5,10 @@
  * @license   http://www.gnu.org/copyleft/gpl.html
  */
 
+define('SIMPLESPEAK_DEFAULT_SERVICE',
+       '/cgi-bin/espeak/getsound.pl?lang=!LANG&text=!TEXT');
+
+
 /**Safely, recursively create directories.
 */
 function _ss_mkdir_safe($base, $path, $perm=0777) { #Or 0664.

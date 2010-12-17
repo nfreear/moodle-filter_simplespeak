@@ -13,10 +13,10 @@ require_once $CFG->libdir .'/filelib.php';
 require_once $CFG->dirroot.'/filter/simplespeak/simplespeaklib.php';
 
 $cache_dir= 'simplespeak/cache';
-$base_url = "$CFG->wwwroot/cgi-bin/espeak/getsound.pl?lang=!LANG&text=!TEXT";
-if (isset($CFG->simplespeak_service_url)
-    && parse_url($CFG->simplespeak_service_url)) {
-    $base_url = $CFG->simplespeak_service_url;
+$base_url = 'http://' .$_SERVER['HTTP_HOST']. SIMPLESPEAK_DEFAULT_SERVICE; #$CFG->wwwroot
+if (isset($CFG->filter_simplespeak_service_url)
+    && parse_url($CFG->filter_simplespeak_service_url)) {
+    $base_url = $CFG->filter_simplespeak_service_url;
 }
 
 // Basic security (and/or course.id + referrer?)
@@ -26,6 +26,8 @@ require_login();
 #$course ID ??
 $text = required_param('q', PARAM_RAW);
 $lang = optional_param('lang', str_replace('_utf8', '', $CFG->lang), PARAM_RAW);
+// Only allow '?cache=0' if you're logged in.
+$cache= optional_param('cache', 1, PARAM_INT);
 
 // Strip white-space and some characters - not '?' - inflection?
 $text = trim($text, "\t\n\r\0\x0B .!\"'");
@@ -44,7 +46,7 @@ $data_file= $data_dir ."$md5.mp3";
 
 
 $resp = NULL;
-if (!file_exists($data_file)) {
+if (!$cache || !file_exists($data_file)) {
 
 	if (!_ss_mkdir_safe($CFG->dataroot, $cache_dir)) {
 	    error("Error creating directory '%DATA/$cache_dir'.");
@@ -66,8 +68,8 @@ if (!file_exists($data_file)) {
 
 	$bytes = strlen($resp->results);
 	if (200 != $resp->status || $bytes <= 0) {
-		var_dump($resp->status, $bytes, $url, $resp->headers);
-		error("Error, TTS service failure :(.");
+		#var_dump($bytes, $url, $resp->headers);
+		error("Error, TTS service failure. HTTP status: $resp->status.");
 	}
 
 	#if headers contains 'Sound-length' @headers('Sound-length: ..');
