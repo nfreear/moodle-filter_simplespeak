@@ -1,7 +1,7 @@
 <!-- -*- markdown -*- -->
 
 SimpleSpeak filter
-======================
+==================
 
 A Moodle filter to provide speech synthesis (text-to-speech/ TTS) services for
 arbitrary text. Text such as `[Speak] Hello world! [/Speak]` is replaced with
@@ -10,8 +10,9 @@ a button with the text as a label. Press the button, and the text is spoken!
 This is beneficial, for example, when teaching younger children. And for
 accessibility.
 
-Requirements: tested with Moodle 1.9.7 (all Moodle 1.9.x should work, Moodle 2.x
-should work - to test!) Requires Javascript. Requires a TTS service (see below).
+Requirements: tested with Moodle 1.9.7 <http://moodle.org/> (all Moodle 1.9.x
+should work, Moodle 2.x should work - to test!) Requires Javascript. Requires
+a TTS service (see below).
 
 Uses:  jQuery (v1.3.2).
 
@@ -58,7 +59,7 @@ Notes
 * Roadmap: add a filter configuration page.
 * Roadmap: improve language support, improve caching.
 * TTS service: you can install local software, eg. use eSpeak/LAME, see
-      <http://code.google.com/p/webanywhere/>
+      <http://code.google.com/p/webanywhere/> for ideas.
   Or it could be a third-party service, for example, Google Translate.
   Note, my reading of the Google Translate terms suggests this is OK - 
   ie. pressing a button is not "automated" (and we cache the sound-files locally).
@@ -66,7 +67,7 @@ Notes
 
 Credits
 -------
-Filter. Copyright (c) 2010 Nicholas Freear.
+SimpleSpeak filter. Copyright (c) 2010 Nicholas Freear.
 
 * License <http://gnu.org/copyleft/gpl.html>
 * <http://freear.org.uk/#moodle>

@@ -1,7 +1,6 @@
 <?php
 /**
  * SimpleSpeak
- *
  * A Moodle filter to provide speech synthesis (TTS) services for arbitrary text.
  *
  * Uses: jQuery, (eSpeak/LAME or external service for TTS - see README.)
@@ -35,7 +34,6 @@
 //  This filter will replace any [Speak] TEXT [/Speak] with
 //  a media plugin that plays that media inline
 //
-//////////////////////////////////////////////////////////////
 
 require_once($CFG->libdir.'/../filter/simplespeak/simplespeaklib.php');
 
