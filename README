@@ -10,9 +10,8 @@ a button with the text as a label. Press the button, and the text is spoken!
 This is beneficial, for example, when teaching younger children. And for
 accessibility.
 
-Requirements: tested with Moodle 1.9.7 <http://moodle.org/> (all Moodle 1.9.x
-should work, Moodle 2.x should work - to test!) Requires Javascript. Requires
-a TTS service (see below).
+Requirements: tested with Moodle 1.9.7 and 2.0.2 <http://moodle.org/> (all Moodle
+1.9.x and 2.0.x should work) Requires Javascript. Requires a TTS service (see below).
 
 Uses:  jQuery (v1.3.2).
 
@@ -22,21 +21,20 @@ Installation
   eg. `/var/www/moodle/filter/simplespeak/`
 2. Log in to Moodle as admin, visit `Site Administration | Modules | Filters |
   Manage Filters`. Scroll down and click on the icon for Simplespeak to enable it.
-3. Add a TTS service to config.php, eg.
+3. Choose SimpleSpeak under Filters, and add a TTS service. Or set in `config.php`, eg.
 
         $CFG->simplespeak_service_url =
           'http://example.org/cgi-bin/espeak/getsound.pl?lang=!LANG&text=!TEXT';
 
-  The string should contain two placeholders, `!LANG` (language), and `!TEXT`.
+  The string can contain two placeholders, `!TEXT` and optionally `!LANG` (language).
   This service can be local, or third-party - see Notes below.
-
 4. Ensure that the directory `$CFG->dataroot` is writeable by the Apache user,
   or create a writeable cache directory, `$CFG->dataroot/simplespeak/cache/`
 
 Usage
 -----
 
-1. Simple example. Enable the filter (admin). Then, type the following:
+1. Simple example. Enable the filter (admin). Then, type the following in a Moodle resource:
 
         [Speak] Hello world! [/Speak]
  
@@ -54,10 +52,10 @@ Usage
 
 Notes
 -----
+
 * Roadmap/ todo: replace jQuery dependency with YUI Javascript.
-* Roadmap: ensure the filter works with Moodle 2.x.
-* Roadmap: add a filter configuration page.
-* Roadmap: improve language support, improve caching.
+* Roadmap: improve TTS language support, improve caching.
+* Text strings are internationalized for Moodle 1.9.x and 2.0.x.
 * TTS service: you can install local software, eg. use eSpeak/LAME, see
       <http://code.google.com/p/webanywhere/> for ideas.
   Or it could be a third-party service, for example, Google Translate.
@@ -70,7 +68,7 @@ Credits
 SimpleSpeak filter. Copyright (c) 2010 Nicholas Freear.
 
 * License <http://gnu.org/copyleft/gpl.html>
-* <http://freear.org.uk/#moodle>
+* <http://freear.org.uk/moodle>
 
 jQuery JavaScript Library. Copyright (c) 2009 John Resig.
 
