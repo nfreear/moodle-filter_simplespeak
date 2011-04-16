@@ -21,8 +21,6 @@ $(document).ready(function() {
       $(this).replaceWith('<button class="this word" title="Say the word" ><span>Say the word; </span>'+word+'</button>');
     });
 
-    $('head').append('<link rel="stylesheet" type="text/css" href="/moodle/filter/packt/filter_style.css"/>');
-
     //<audio> ??
     $(".tts").append('<iframe id="tts-frame" title="Player" src="" width="2" height="2"></iframe>');
 
