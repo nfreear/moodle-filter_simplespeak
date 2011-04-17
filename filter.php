@@ -9,6 +9,9 @@
  * @copyright (c) 2010 Nicholas Freear {@link http://freear.org.uk}.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v2 or later
  * @link      http://freear.org.uk/#moodle
+ *
+ * Note, in MSIE7 (w/o Quicktime?) <iframe>-proxy leads to a prompt to save .MP3.
+ * So, we use an <iframe>-player-proxy solution (with autoplay by default).
  */
 /**
   Usage:
@@ -160,9 +163,10 @@ function _simplespeak_filter_script($newtext, $call_count, $use_oembed_js=FALSE)
 EOF;
         }
 
+        //Was: 'proxy_tts'
         $newtext .= <<<EOF
     <script type="text/javascript">
-    var SIMPLESPEAK_URL="{$CFG->wwwroot}/filter/simplespeak/proxy_tts/?q=";
+    var SIMPLESPEAK_URL="{$CFG->wwwroot}/filter/simplespeak/player/?q=";
     var SIMPLESPEAK_CSS="{$CFG->wwwroot}/filter/simplespeak/simplespeak.css";
     </script>
     <script src="{$CFG->wwwroot}/filter/simplespeak/jquery.speak.js" type="text/javascript"></script>
