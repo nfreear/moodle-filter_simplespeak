@@ -11,17 +11,19 @@ define('SIMPLESPEAK_DEFAULT_SERVICE',
 
 /**Safely, recursively create directories.
 */
-function _ss_mkdir_safe($base, $path, $perm=0777) { #Or 0664.
+function _ss_mkdir_safe($base, $path, $perm=0775) { #0777, Or 0664.
   $parts = explode('/', trim($path, '/'));
   $dir = $base;
   $success = true;
   foreach ($parts as $p) {
 	$dir .= "/$p";
-	if (is_dir($dir)) { break;
+	if (is_dir($dir)) {
+	  //break;
 	} elseif (file_exists($dir)) {
-	  error("File exists '$p'.");
+	  //error("File exists '$p'.");
+	} else {
+	  $success = mkdir($dir, $perm);
 	}
-	$success = mkdir($dir, $perm);
   }
   return $success;
 }
