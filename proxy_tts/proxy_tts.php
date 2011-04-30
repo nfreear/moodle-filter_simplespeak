@@ -41,9 +41,13 @@ if (''==$text) {
 #}
 
 $md5 = md5($text);
-$data_dir = "$CFG->dataroot/simplespeak/cache/";
-$data_file= $data_dir ."$md5.mp3";
+$host= parse_url($base_url, PHP_URL_HOST);
+$host_tr = str_replace(array('www.', '.'), '', $host);
+$cache_dir .= '/'.substr($host_tr, 0, 4).'/'.$md5[0];
+$data_file= "$CFG->dataroot/$cache_dir/$md5.mp3";
 
+header("X-FSS-File: $cache_dir/$md5.mp3");
+header("X-FSS-Text: $text");
 
 $resp = NULL;
 if (!$cache || !file_exists($data_file)) {
