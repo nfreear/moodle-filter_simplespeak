@@ -28,12 +28,14 @@ Installation
 
   The string can contain two placeholders, `!TEXT` and optionally `!LANG` (language).
   This service can be local, or third-party - see Notes below.
+
 4. Ensure that the directory `$CFG->dataroot` is writeable by the Apache user,
   or create a writeable cache directory, `$CFG->dataroot/simplespeak/cache/`
 
 Links
 -----
-* Moodle plugin page: <http://moodle.org/mod/data/view.php?d=13&rid=X>
+* Moodle plugin page: <http://moodle.org/mod/data/view.php?rid=4778>
+* Discussion: <http://moodle.org/mod/forum/discuss.php?d=174762>
 * Code, Git: <https://github.com/nfreear/moodle-filter_simplespeak>
 * Code, Hg:  <https://bitbucket.org/nfreear/simplespeak>
 * Demo: <http://freear.org.uk/moodle>
