@@ -27,13 +27,14 @@ Installation
           'http://example.org/cgi-bin/espeak/getsound.pl?lang=!LANG&text=!TEXT';
 
   The string can contain two placeholders, `!TEXT` and optionally `!LANG` (language).
-  This service can be local, or third-party - see Notes below.
+  This service can be local, or third-party - see Links below.
 
 4. Ensure that the directory `$CFG->dataroot` is writeable by the Apache user,
   or create a writeable cache directory, `$CFG->dataroot/simplespeak/cache/`
 
 Links
 -----
+* Wiki, including notes on services: <http://docs.moodle.org/en/User:Nick_Freear/SimpleSpeak_filter>
 * Moodle plugin page: <http://moodle.org/mod/data/view.php?rid=4778>
 * Discussion: <http://moodle.org/mod/forum/discuss.php?d=174762>
 * Code, Git: <https://github.com/nfreear/moodle-filter_simplespeak>
@@ -53,23 +54,19 @@ question/quiz (note, line-breaks, which can be represented by <br /> are require
         ;; Just a comment.
         letter = A
         sound  = ah
-        image  = http://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Red_Delicious.jpg/240px-Red_Delicious.jpg
-        alt    = A red delicious apple
+        image  = "http://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Red_Delicious.jpg/240px-Red_Delicious.jpg"
+        image_source = http://commons.wikimedia.org/wiki/File:Red_Delicious.jpg
+        alt    = "Red delicious apple, from Bangin/Wikimedia Commons, Creative Commons Attribution-ShareAlike License"
         word   = apple
         phrase = Which of the words below start with the letter [em]a[/em]?
         [/Speak]
 
 Notes
 -----
+* TTS services - see Links above.
 * Roadmap/ todo: replace jQuery dependency with YUI Javascript.
 * Roadmap: improve TTS language support, improve caching.
 * Text strings are internationalized for Moodle 1.9.x and 2.0.x.
-* TTS service: you can install local software, eg. use eSpeak/LAME, see
-      <http://code.google.com/p/webanywhere/> for ideas.
-  Or it could be a third-party service, for example, Google Translate.
-  Note, my reading of the Google Translate terms suggests this is probably OK - 
-  ie. pressing a button is not "automated" (and we cache the sound-files locally).
-  However, I accept no responsibility for this - check the terms yourself!
 
 Credits
 -------
