@@ -125,7 +125,7 @@ function _simplespeak_filter_callback($matches_ini) {
             $use_oembed_js = (bool) $speak->image_el;
         }
         if (!$speak->image_el) {
-            $speak->image_el = "<img alt='$speak->alt' src='$speak->image' />";
+            $speak->image_el = "<img title='$speak->alt' src='$speak->image' />";
         }
     }
 
